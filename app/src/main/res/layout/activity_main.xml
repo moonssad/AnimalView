@@ -1,15 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:danmu_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    >
 
 
     <com.xiniu.myapplication.Views.danmuView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true"
+        android:layout_height="200dp"
         android:id="@+id/qw"
+        app:danmuView_text_num="12"
+        app:danmuView_text_size="20dp"
+        android:layout_marginTop="10dp"
         />
 
+    <com.xiniu.myapplication.Views.DanmuSurfaceView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/qw"
+        android:id="@+id/danmu"
+        app:max_text_num="15"
+        app:text_size="15dp"
+        />
 
 </RelativeLayout>

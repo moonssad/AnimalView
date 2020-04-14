@@ -1,6 +1,7 @@
 package com.xiniu.myapplication.Views;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
@@ -29,6 +30,8 @@ public class danmuView extends View {
     private danmu danmu;
     int[] colors;
     List<danmu> danmus = new ArrayList<>();
+    private float textSize;
+    private int maxText;
 
     public danmuView(Context context) {
         this(context, null);
@@ -40,12 +43,16 @@ public class danmuView extends View {
 
     public danmuView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.danmuView);
+         textSize = typedArray.getDimension(R.styleable.danmuView_danmuView_text_size,40);
+         maxText= typedArray.getInt(R.styleable.danmuView_danmuView_text_num,5);
+         typedArray.recycle();
         init();
     }
 
     private void init() {
         paint = new Paint();
-        paint.setTextSize(40);
+        paint.setTextSize(textSize);
         colors = getResources().getIntArray(R.array.color_array);
 
     }
@@ -53,8 +60,16 @@ public class danmuView extends View {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
+        Log.e("onlayout",getMeasuredHeight()+""+getMeasuredWidth());
+        this.x = getMeasuredWidth();
+        this.y = getMeasuredHeight();
 
-
+        if (danmus.size()==0){
+            for (int i = 0; i < colors.length; i++) {
+                danmu = new danmu("hello", (float) (Math.random() * 10), colors[i], (float) Math.random() * x, (float) Math.random() * y);
+                danmus.add(danmu);
+            }
+        }
     }
 
     @Override
@@ -74,14 +89,8 @@ public class danmuView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        this.x = MeasureSpec.getSize(widthMeasureSpec);
-        this.y = MeasureSpec.getSize(heightMeasureSpec);
-        if (danmus.size()==0){
-            for (int i = 0; i < colors.length; i++) {
-                danmu = new danmu("hello", (float) (Math.random() * 10), colors[i], (float) Math.random() * x, (float) Math.random() * y);
-                danmus.add(danmu);
-            }
-        }
+        Log.e("onMeasure",x+""+y);
+
     }
 
     private class danmu {
