@@ -23,7 +23,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/qw"
         android:id="@+id/danmu"
-        app:max_text_num="15"
+        app:max_text_num="5"
         app:text_size="15dp"
         />
 

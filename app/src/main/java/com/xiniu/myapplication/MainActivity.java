@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         mdanmuSurfaceView = (DanmuSurfaceView) findViewById(R.id.danmu);
         mdanmuSurfaceView.addLayoutListener(new DanmuSurfaceView.LayoutListener() {
             @Override
-            public void onLayoutFinish() {
+            public void onCreateView() {
                 //todo 插入数据
                 mdanmuSurfaceView.addText("纯电动工作模式介绍");
                 mdanmuSurfaceView.addText("安全气囊触发条件");

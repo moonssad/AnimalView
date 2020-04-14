@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -37,9 +38,21 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     private float maxSpeed = 10;
     private Canvas canvas;
     private Thread thread;
-    private boolean threadRun=true;
+    private boolean threadRun = true;
     private LayoutListener layoutListener;
+    private float textHeight;
 
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        int action = event.getAction();
+        int x = (int) event.getX();
+        int y = (int) event.getY();
+        Log.e("touchevent", x + "" + y);
+
+        return true;
+
+    }
 
     public DanmuSurfaceView(Context context) {
         this(context, null);
@@ -59,7 +72,7 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
     }
 
-    public void addLayoutListener(LayoutListener listener){
+    public void addLayoutListener(LayoutListener listener) {
         this.layoutListener = listener;
     }
 
@@ -73,10 +86,10 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         random = new Random();
     }
 
-//    //todo 还没有测量就开始添加数据了。添加数据必须在数据结束后再进行添加。
+    //    //todo 还没有测量就开始添加数据了。添加数据必须在数据结束后再进行添加。
     public void addText(String text) {
         int color = colors[random.nextInt(colors.length)];
-        Danmu danmu = new Danmu(text, (float)(Math.random()*maxSpeed), color, width, (float) (Math.random() * height), paint.measureText(text));
+        Danmu danmu = new Danmu(text, (float) (Math.random() * maxSpeed), color, width, (float) (Math.random() * height), paint.measureText(text));
         if (danmus.size() < maxShowText) {
             danmus.add(danmu);
         } else {
@@ -88,7 +101,12 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        threadRun=true;
+        Log.e("surfaceCreated", "des");
+        width = getMeasuredWidth();
+        height = getMeasuredHeight();
+        layoutListener.onCreateView();
+        threadRun = true;
+        textHeight = height / (maxShowText + 2);
         draw();
 
     }
@@ -101,15 +119,19 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-        threadRun=false;
+        threadRun = false;
+        danmus.clear();
+
+        Log.e("surfaceDestroyed", "des");
     }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        width = getMeasuredWidth();
-        height = getMeasuredHeight();
-        layoutListener.onLayoutFinish();
+        Log.e("onlayout", "hello");
+//        width = getMeasuredWidth();
+//        height = getMeasuredHeight();
+//        layoutListener.onCreateView();
 //        int color = colors[random.nextInt(colors.length)];
 //        Danmu danmu = new Danmu("这是onmeasure的数据", (float) (Math.random() * maxSpeed),
 //                color, width, (float) (Math.random() * height), paint.measureText("这是onmeasure的数据".toString()));
@@ -127,17 +149,21 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         thread = new Thread(this);
         thread.start();
     }
+
     @Override
     public void run() {
         while (threadRun) {
-
             canvas = getHolder().lockCanvas();
             canvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
-            for (Danmu danmuss : danmus) {
+
+            for (int i = 0; i < danmus.size(); i++) {
+                Danmu danmuss = danmus.get(i);
                 paint.setColor(danmuss.getClolr());
-                canvas.drawText(danmuss.getContent(), danmuss.getStartx(), danmuss.getStarty(), paint);
+                canvas.drawText(danmuss.getContent(), danmuss.getStartx(), textHeight * (i + 1), paint);
                 danmuss.updata();
+
             }
+
             getHolder().unlockCanvasAndPost(canvas);
             try {
                 Thread.sleep(10);
@@ -231,7 +257,7 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
 
     //增加一接口回掉，当测量完成后再进行获取数据。
     public interface LayoutListener {
-        void  onLayoutFinish();
+        void onCreateView();
     }
 
 }
