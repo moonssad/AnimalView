@@ -5,6 +5,7 @@ buildscript {
     repositories {
         google()
         jcenter()
+        maven{url'http://maven.aliyun.com/nexus/content/groups/public/'}
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.1.0-alpha07'
@@ -19,7 +20,16 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven{url'http://maven.aliyun.com/nexus/content/groups/public/'}
+
     }
+}
+
+ext {
+    roomVersion = '1.1.1'
+    archLifecycleVersion = '1.1.1'
+    coreTestingVersion = '1.1.1'
+    materialVersion = '1.0.0'
 }
 
 task clean(type: Delete) {
