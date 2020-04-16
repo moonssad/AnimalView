@@ -89,7 +89,7 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     //    //todo 还没有测量就开始添加数据了。添加数据必须在数据结束后再进行添加。
     public void addText(String text) {
         int color = colors[random.nextInt(colors.length)];
-        Danmu danmu = new Danmu(text, (float) (Math.random() * maxSpeed), color, width, (float) (Math.random() * height), paint.measureText(text));
+        Danmu danmu = new Danmu(text, (float) (Math.random() * maxSpeed), color, width, paint.measureText(text));
         if (danmus.size() < maxShowText) {
             danmus.add(danmu);
         } else {
@@ -129,18 +129,6 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
         Log.e("onlayout", "hello");
-//        width = getMeasuredWidth();
-//        height = getMeasuredHeight();
-//        layoutListener.onCreateView();
-//        int color = colors[random.nextInt(colors.length)];
-//        Danmu danmu = new Danmu("这是onmeasure的数据", (float) (Math.random() * maxSpeed),
-//                color, width, (float) (Math.random() * height), paint.measureText("这是onmeasure的数据".toString()));
-//        if (danmus.size() < maxShowText) {
-//            danmus.add(danmu);
-//        } else {
-//            danmus.remove(0);
-//            danmus.add(danmu);
-//        }
 
     }
 
@@ -182,7 +170,6 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         private float speed;
         private int clolr;
         private float startx;
-        private float starty;
         private float textLength;
 
         public Danmu() {
@@ -216,17 +203,13 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
             this.startx = startx;
         }
 
-        public void setStarty(float starty) {
-            this.starty = starty;
-        }
+
 
         public float getStartx() {
             return startx;
         }
 
-        public float getStarty() {
-            return starty;
-        }
+
 
         public void setTextLength(float textLength) {
             this.textLength = textLength;
@@ -244,12 +227,11 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
             startx = startx - speed;
         }
 
-        public Danmu(String content, float speed, int color, float startx, float starty, float textLength) {
+        public Danmu(String content, float speed, int color, float startx, float textLength) {
             this.content = content;
             this.speed = speed;
             this.clolr = color;
             this.startx = startx;
-            this.starty = starty;
             this.textLength = textLength;
         }
     }
