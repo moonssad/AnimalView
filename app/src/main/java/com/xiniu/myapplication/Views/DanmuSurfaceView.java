@@ -104,7 +104,9 @@ public class DanmuSurfaceView extends SurfaceView implements SurfaceHolder.Callb
         Log.e("surfaceCreated", "des");
         width = getMeasuredWidth();
         height = getMeasuredHeight();
-        layoutListener.onCreateView();
+        if (layoutListener!=null){
+            layoutListener.onCreateView();
+        }
         threadRun = true;
         textHeight = height / (maxShowText + 2);
         draw();

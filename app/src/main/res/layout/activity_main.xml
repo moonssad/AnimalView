@@ -8,8 +8,8 @@
 
     <data>
         <variable
-            name="User"
-            type="com.xiniu.myapplication.mvvm.room.UserData"/>
+            name="viewModel"
+            type="com.xiniu.myapplication.MainView"/>
     </data>
 
     <RelativeLayout
@@ -22,7 +22,7 @@
                android:layout_width="30dp"
                android:layout_height="wrap_content"
                android:id="@+id/name"
-               android:text="@{User.name}"
+               android:text="@{viewModel.userData.name}"
                tools:text="wyz"
                />
 
@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/age"
             android:layout_toRightOf="@+id/name"
-            android:text="@{User.age}"
+            android:text="@{viewModel.userData.age}"
             tools:text="12"
 
 
