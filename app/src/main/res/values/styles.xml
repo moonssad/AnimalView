@@ -12,25 +12,19 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowIsTranslucent">true</item>
         <item name="windowNoTitle">true</item>
-        <item name="android:dropDownListViewStyle">@style/SpinnerStyle</item>
+        <item name="dropDownListViewStyle">@style/SpinnerStyle</item>
     </style>
 
     <style name="SpinnerStyle" parent="android:Widget.ListView.DropDown">
-        <item name="android:divider">#FF7D7878</item>
+        <item name="divider">#FF7D7878</item>
         <item name="android:dividerHeight">@dimen/qb_px_1</item>
     </style>
 
-    <!--activity左侧，4个imageviw的布局
-      android:layout_width="@dimen/qb_px_90"
-                android:layout_height="@dimen/qb_px_90"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/qb_px_10"-->
-    <!--<style name="MyImageView" >-->
-    <!--<item name="android:width">@dimen/qb_px_90</item>-->
-    <!--<item name="android:height">@dimen/qb_px_90</item>-->
-    <!--<item name="android:layout_centerHorizontal">true</item>-->
-    <!--<item name="android_marginTop">@dimen/qb_px10</item>-->
-    <!--</style>-->
+    <style name="MyImageView" >
+    <item name="android:layout_centerHorizontal">true</item>
+    <item name="android:layout_marginTop">@dimen/qb_px_10</item>
+</style>
+
 
 
 </resources>

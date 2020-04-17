@@ -22,7 +22,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding,MainView> {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_main_1;
+        return R.layout.activity_main;
     }
 
     @Override

@@ -1,135 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:danmu_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_lin"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/gray"
-    tools:context=".MainActivity">
 
-    <LinearLayout
-        android:layout_width="@dimen/qb_px_200"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/qb_px_29"
-        android:layout_marginTop="@dimen/qb_px_29"
-        android:gravity="center"
+    >
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.xiniu.myapplication.MainView"/>
+    </data>
+
+    <RelativeLayout
         android:orientation="vertical"
-        android:weightSum="4">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/hot_image"
-                android:layout_width="@dimen/qb_px_90"
-                android:layout_height="@dimen/qb_px_90"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/qb_px_10"
-                tools:src="@drawable/ic_launcher_background" />
-
-            <TextView
-                android:id="@+id/hot_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/hot_image"
-                android:layout_marginTop="@dimen/qb_px_10"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/qb_px_20"
-                tools:text="本周热门" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/skill_image"
-                android:layout_width="@dimen/qb_px_90"
-                android:layout_height="@dimen/qb_px_90"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/qb_px_10"
-                tools:src="@drawable/ic_launcher_background" />
-
-            <TextView
-                android:id="@+id/skill_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/skill_image"
-                android:layout_marginTop="@dimen/qb_px_10"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/qb_px_20"
-                tools:text="本周热门" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/handbook_image"
-                android:layout_width="@dimen/qb_px_90"
-                android:layout_height="@dimen/qb_px_90"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/qb_px_10"
-                tools:src="@drawable/ic_launcher_background" />
-
-            <TextView
-                android:id="@+id/handbook_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/handbook_image"
-                android:layout_marginTop="@dimen/qb_px_10"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/qb_px_20"
-                tools:text="本周热门" />
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <ImageView
-                android:id="@+id/setting_image"
-                android:layout_width="@dimen/qb_px_90"
-                android:layout_height="@dimen/qb_px_90"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="@dimen/qb_px_10"
-                tools:src="@drawable/ic_launcher_background"
-
-                />
-
-            <TextView
-                android:id="@+id/seting_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/setting_image"
-                android:layout_marginTop="@dimen/qb_px_10"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="@dimen/qb_px_20"
-                tools:text="本周热门" />
-        </RelativeLayout>
-    </LinearLayout>
-
-    <View
-        android:layout_width="@dimen/qb_px_2"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/qb_px_29"
-        android:layout_marginTop="@dimen/qb_px_29"
-        android:background="@color/white" />
-
-    <FrameLayout
-        android:id="@+id/frame"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/qb_px_29"></FrameLayout>
-</LinearLayout>
+
+        >
+           <TextView
+               android:layout_width="30dp"
+               android:layout_height="wrap_content"
+               android:id="@+id/name"
+               android:text="@{viewModel.userData.name}"
+               tools:text="wyz"
+               />
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/age"
+            android:layout_toRightOf="@+id/name"
+            android:text="@{viewModel.userData.age}"
+            tools:text="12"
+            />
+          <CircleImageView
+              android:layout_width="100dp"
+              android:layout_height="100dp"
+              android:layout_toRightOf="@+id/age"
+              android:src="@drawable/ic_launcher"
+              ></CircleImageView>
+        <com.xiniu.myapplication.Views.danmuView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/qw"
+            app:danmuView_text_num="12"
+            app:danmuView_text_size="20dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <com.xiniu.myapplication.Views.DanmuSurfaceView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/qw"
+            android:id="@+id/danmu"
+            app:max_text_num="5"
+            app:text_size="15dp" />
+
+    </RelativeLayout>
+</layout>
