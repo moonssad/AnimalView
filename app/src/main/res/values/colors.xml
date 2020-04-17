@@ -7,8 +7,34 @@
     <color name="aqua">#02D1AC</color>
     <color name="yellow">#FFD200</color>
     <color name="blue">#00C6FF</color>
-    <color name="green">#00E099</color>
     <color name="pink">#FF3892</color>
+    <color name="transparent">#00000000</color>
+    <color name="gray">#FF7D7878</color>
+    <color name="item_backGround">#363636</color> <!--#FF7D7878-->
+    <color name="item_backGround_day">#BFF6D6CD</color>
+    <color name="black">#ff000000</color>
+    <color name="white">#ffffffff</color>
+    <color name="light_white">#CCCCCC</color>
+    <color name="alpha_gray">#80888888</color>
+    <color name="light_gray">#888888</color>
+    <color name="glass_gray">#EE303030</color>
+    <color name="dark_gray">#232323</color>
+    <color name="mdark_gray">#303030</color>
+    <color name="light_gray_alpha">#22888888</color>
+    <color name="search_gray">#555555</color>
+    <color name="red">#ff0000</color>
+    <color name="light_blue">#00E5EE</color>
+    <color name="rect">#FFF456</color>
+    <color name="half_seekbar_select_color">#12F7EC</color>
+    <color name="half_seekbar_bg_color">#DAF9F8</color>
+    <color name="weather_color">#ffffff</color>
+    <color name="mistyrose">#ffe4e1</color>
+    <color name="lightpink">#ffb6c1</color>
+    <color name="violet">#ee82ee</color>
+    <color name="tomato">#ff6347</color>
+    <color name="green">#B325CB55</color>
+    <color name="btn_white">#33D9D7D7</color>
+    <color name="white_alpha">#88FFFFFF</color>
 
     <array name="color_array">
         <item>@color/colorPrimary</item>
