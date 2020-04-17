@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:danmu_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    >
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.xiniu.myapplication.MainView"/>
+    </data>
+
+    <RelativeLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+           <TextView
+               android:layout_width="30dp"
+               android:layout_height="wrap_content"
+               android:id="@+id/name"
+               android:text="@{viewModel.userData.name}"
+               tools:text="wyz"
+               />
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/age"
+            android:layout_toRightOf="@+id/name"
+            android:text="@{viewModel.userData.age}"
+            tools:text="12"
+
+
+
+            />
+        <com.xiniu.myapplication.Views.danmuView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/qw"
+            app:danmuView_text_num="12"
+            app:danmuView_text_size="20dp"
+            android:layout_marginTop="10dp"
+            />
+
+        <com.xiniu.myapplication.Views.DanmuSurfaceView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/qw"
+            android:id="@+id/danmu"
+            app:max_text_num="5"
+            app:text_size="15dp" />
+
+    </RelativeLayout>
+</layout>

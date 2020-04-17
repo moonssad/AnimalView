@@ -15,10 +15,8 @@ import com.xiniu.myapplication.mvvm.room.DataHandBase;
  * 更新描述：
  */
 public abstract class BaseViewModel  extends ViewModel {
-    protected DataHandBase database;
     public BaseViewModel() {
         super();
-        database = DataHandBase.instance((Application) MyApplication.context);
         onCreate();
     }
 

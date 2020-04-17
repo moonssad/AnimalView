@@ -1,7 +1,6 @@
 package com.xiniu.myapplication;
 
 import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.support.annotation.Nullable;
 import com.xiniu.myapplication.Views.DanmuSurfaceView;
 import com.xiniu.myapplication.base.BaseActivity;
@@ -23,7 +22,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding,MainView> {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.activity_main;
+        return R.layout.activity_main_1;
     }
 
     @Override

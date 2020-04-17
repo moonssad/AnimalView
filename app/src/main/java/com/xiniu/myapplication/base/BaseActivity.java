@@ -32,6 +32,7 @@ public abstract class BaseActivity<DB extends ViewDataBinding, VM extends BaseVi
         dataBinding = DataBindingUtil.setContentView(this, getLayoutId());
         viewModel = ViewModelProviders.of(this).get(getViewModelClazz());
         dataBinding.setVariable(getViewModelId(), viewModel);
+        initViewModel();
         initData();
         initView();
     }
